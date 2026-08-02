@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Category {
+  GROCERIES
+  HOME_APPLIANCE
+  LAPTOPS
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String   @unique
+  email     String   @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sales      Sale[]
+
+  @@index([name])
+  @@index([createdAt])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  brand       String
+  category    Category
+  description String?
+  quantity    Int
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  saleItems   SaleItem[]
+
+  @@index([name])
+  @@index([brand])
+  @@index([category])
+  @@index([brand, category])
+}
+
+model Sale {
+  id          String   @id @default(cuid())
+
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
+
+  discount    Decimal  @default(0.00) @db.Decimal(10,2)
+  subtotal    Decimal  @db.Decimal(10,2)
+
+  createdAt   DateTime @default(now())
+
+  items        SaleItem[]
+
+  @@index([customerId])
+  @@index([createdAt])
+}
+
+model SaleItem {
+  id         String   @id @default(cuid())
+
+  saleId     String
+  productId  String
+
+  quantity   Int
+  unitPrice  Decimal @db.Decimal(10,2)
+
+  sale        Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  product     Product @relation(fields: [productId], references: [id])
+
+  @@index([saleId])
+  @@index([productId])
+  @@unique([saleId, productId])
+}
