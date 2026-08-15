@@ -1,18 +1,14 @@
 'use client'
+import { UserButton } from "@clerk/nextjs";
+import { SignIn } from "@clerk/react";
 
-import { useUser } from '@clerk/nextjs'
-
-export default function Page() {
-  const { isSignedIn, isLoaded } = useUser()
-
-  // Handle loading state
-  if (!isLoaded) return <h1>Loading...</h1>
-
-  if (!isSignedIn) {
-    // Add logic to handle the unauthenticated user
-    // This example renders a UI but you could also redirect to the sign-in page instead
-    return <h1>You must be signed in to view this page</h1>
-  }
-
-  return <h1>Hello world</h1>
+export default function Home() {
+  return (
+    <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+      <section style={{ maxWidth: '640px', textAlign: 'center' }}>
+        <h1>Inventory Dashboard</h1>
+        <p>Welcome to your inventory system.</p>
+      </section>
+    </main>
+  );
 }
