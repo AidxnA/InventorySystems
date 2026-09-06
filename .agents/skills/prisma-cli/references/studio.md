@@ -1,5 +1,6 @@
 # prisma studio
 
+
 Opens a visual database browser for viewing and editing data.
 
 ## Command
