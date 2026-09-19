@@ -11,7 +11,7 @@ export const navigationlink = [
 
 
 type StatusCardProps = {
-    id:Number;
+    id:string;
     description:string;
     icon: React.ReactNode;
     title:string;
@@ -21,9 +21,9 @@ type StatusCard = {
 }
 export const dashboardstatuscard: StatusCard = {
     status: [
-        {id:1, title: "Today's Sales", description: "Cash and digital channels", icon: <BadgeDollarSign/>},
-        {id:2, title: "Goods Traded (Month)", description: "Inclusive of wholesales", icon: <ShoppingCart/>},
-        {id:1, title: "Current Stock Value", description: "Based on inventory records", icon: <Box/>},
-        {id:1, title: "Monthly Profit", description: "Your monthly profit", icon: <TrendingUp/>},
+        {id:"1", title: "Today's Sales", description: "Cash and digital channels", icon: <BadgeDollarSign/>},
+        {id:"2", title: "Goods Traded (Month)", description: "Inclusive of wholesales", icon: <ShoppingCart/>},
+        {id:"3", title: "Current Stock Value", description: "Based on inventory records", icon: <Box/>},
+        {id:"4", title: "Monthly Profit", description: "Your monthly profit", icon: <TrendingUp/>},
     ]
 }
