@@ -21,15 +21,17 @@ model Customer {
 }
 
 model Product {
-  id          String     @id @default(cuid())
-  name        String
-  brand       String
-  category    Category
-  description String?
-  quantity    Int
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  saleItems   SaleItem[]
+  id           String     @id @default(cuid())
+  name         String
+  brand        String
+  category     Category
+  description  String?
+  quantity     Int
+  currentValue Decimal    @default(0.00) @db.Decimal(10, 2)
+  costPrice    Decimal    @default(0.00) @db.Decimal(10, 2)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  saleItems    SaleItem[]
 
   @@index([name])
   @@index([brand])
