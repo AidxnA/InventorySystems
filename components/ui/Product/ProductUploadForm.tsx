@@ -119,70 +119,74 @@ export function ProductUploadForm() {
 
           <FieldGroup>
 
-            {/* NAME */}
+            <div className="grid gap-7 md:grid-cols-2">
 
-            <Controller
-              name="name"
-              control={form.control}
-              render={({ field, fieldState }) => (
+              {/* NAME */}
 
-                <Field data-invalid={fieldState.invalid}>
+              <Controller
+                name="name"
+                control={form.control}
+                render={({ field, fieldState }) => (
 
-                  <FieldLabel htmlFor="product-name">
-                    Name
-                  </FieldLabel>
+                  <Field data-invalid={fieldState.invalid}>
 
-                  <Input
-                    {...field}
-                    id="product-name"
-                    placeholder="Product Name"
-                    autoComplete="off"
-                    aria-invalid={fieldState.invalid}
-                  />
+                    <FieldLabel htmlFor="product-name">
+                      Name
+                    </FieldLabel>
 
-                  {fieldState.invalid && (
-                    <FieldError
-                      errors={[fieldState.error]}
+                    <Input
+                      {...field}
+                      id="product-name"
+                      placeholder="Product Name"
+                      autoComplete="off"
+                      aria-invalid={fieldState.invalid}
                     />
-                  )}
 
-                </Field>
+                    {fieldState.invalid && (
+                      <FieldError
+                        errors={[fieldState.error]}
+                      />
+                    )}
 
-              )}
-            />
+                  </Field>
+
+                )}
+              />
 
 
-            {/* BRAND */}
+              {/* BRAND */}
 
-            <Controller
-              name="brand"
-              control={form.control}
-              render={({ field, fieldState }) => (
+              <Controller
+                name="brand"
+                control={form.control}
+                render={({ field, fieldState }) => (
 
-                <Field data-invalid={fieldState.invalid}>
+                  <Field data-invalid={fieldState.invalid}>
 
-                  <FieldLabel htmlFor="product-brand">
-                    Brand
-                  </FieldLabel>
+                    <FieldLabel htmlFor="product-brand">
+                      Brand
+                    </FieldLabel>
 
-                  <Input
-                    {...field}
-                    id="product-brand"
-                    placeholder="Brand Name"
-                    autoComplete="off"
-                    aria-invalid={fieldState.invalid}
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError
-                      errors={[fieldState.error]}
+                    <Input
+                      {...field}
+                      id="product-brand"
+                      placeholder="Brand Name"
+                      autoComplete="off"
+                      aria-invalid={fieldState.invalid}
                     />
-                  )}
 
-                </Field>
+                    {fieldState.invalid && (
+                      <FieldError
+                        errors={[fieldState.error]}
+                      />
+                    )}
 
-              )}
-            />
+                  </Field>
+
+                )}
+              />
+
+            </div>
 
 
             {/* CATEGORY */}
