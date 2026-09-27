@@ -2,84 +2,20 @@ import React from 'react'
 import { DataTable } from './data-table'
 import { columns } from './columns'
 import { ProductUploadForm } from '@/components/ui/Product/ProductUploadForm'
+import { getProducts } from '@/lib/actions'
 
 type Props = {}
 
-const page = (props: Props) => {
-  const data = [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-  ]
+const page = async (props: Props) => {
+  const data = await getProducts()
+  console.log("Products:", data)
+
   return (
     <div className= 'flex mx-auto mt-5'>
 
 
-      {/* <DataTable columns={columns} data={data} /> */}
-      <ProductUploadForm />
+      <DataTable columns={columns} data={data} />
+      {/* <ProductUploadForm /> */}
     </div>
   )
 }

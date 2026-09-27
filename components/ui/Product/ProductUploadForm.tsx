@@ -36,6 +36,7 @@ import {
 
 import { Textarea } from "@/components/ui/textarea"
 import { Category } from "@/lib/generated/prisma/enums"
+import { uploadProduct } from "@/lib/actions"
 
 
 const formSchema = z.object({
@@ -74,7 +75,7 @@ export function ProductUploadForm() {
     defaultValues: {
       name: "",
       brand: "",
-      category: undefined,
+      category: "GROCERIES",
       description: "",
       quantity: 0,
       currentValue: 0,
@@ -83,10 +84,14 @@ export function ProductUploadForm() {
   })
 
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
 
     console.log("Product:", data)
-
+try{
+  // @ts-ignore
+  await uploadProduct(data)} catch(error){
+  console.error("Error uploading product:", error)
+}
     toast.success("Product submitted successfully")
 
   }
