@@ -1,21 +1,18 @@
-import React from 'react'
 import { DataTable } from './data-table'
 import { columns } from './columns'
-import { ProductUploadForm } from '@/components/ui/Product/ProductUploadForm'
+import { ProductUploadDialog } from '@/components/ui/Product/ProductUploadDialog'
 import { getProducts } from '@/lib/actions'
 
-type Props = {}
-
-const page = async (props: Props) => {
+const page = async () => {
   const data = await getProducts()
   console.log("Products:", data)
 
   return (
-    <div className= 'flex mx-auto mt-5'>
-
-
+    <div className="mx-auto mt-5 w-full max-w-7xl px-4">
+      <div className="mb-4 flex justify-end">
+        <ProductUploadDialog />
+      </div>
       <DataTable columns={columns} data={data} />
-      {/* <ProductUploadForm /> */}
     </div>
   )
 }

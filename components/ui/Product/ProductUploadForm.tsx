@@ -86,7 +86,7 @@ export function ProductUploadForm() {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
 
-    console.log("Product:", data)
+    console.log("Product:", data) 
 try{
   // @ts-ignore
   await uploadProduct(data)} catch(error){
@@ -98,7 +98,7 @@ try{
 
 
   return (
-    <Card className="w-[1000px] ">
+    <Card className="w-full">
 
       <CardHeader>
 
@@ -316,7 +316,7 @@ try{
 
 
             {/* CURRENT VALUE */}
-
+<div className= "flex flex-row space-x-3"> 
             <Controller
               name="currentValue"
               control={form.control}
@@ -383,7 +383,7 @@ try{
 
               )}
             />
-
+</div>
           </FieldGroup>
 
         </form>

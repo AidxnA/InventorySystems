@@ -1,10 +1,13 @@
+import { SalesUploadForm } from '@/components/Sales/SalesUploadForm'
 import React from 'react'
 
 type Props = {}
 
 const page = (props: Props) => {
   return (
-    <div>page</div>
+    <div>
+      <SalesUploadForm/>
+    </div>
   )
 }
 
