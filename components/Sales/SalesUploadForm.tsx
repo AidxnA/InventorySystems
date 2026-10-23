@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/input-group"
 
 import { Product } from "@/lib/generated/prisma/client"
-import { testByName } from "@/lib/actions"
+
 
 const formSchema = z.object({
  discount: z.number().min(0, {message: "Discount has to be at least 0%"}),
