@@ -21,8 +21,8 @@ export const columns = columnHelper.columns([
 
     header: "Category",
   }),
-  columnHelper.accessor("description", {
+  columnHelper.accessor("quantity", {
 
-    header: "Description",
+    header: "Quantity",
   }),
 ])

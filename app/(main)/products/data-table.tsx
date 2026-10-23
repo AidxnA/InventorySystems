@@ -31,12 +31,12 @@ export function DataTable<TData extends RowData>({
   return (
     <div className="overflow-hidden rounded-md border">
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-purple-200">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className= 'font-bold'>
                     {header.isPlaceholder ? null : (
                       <table.FlexRender header={header} />
                     )}

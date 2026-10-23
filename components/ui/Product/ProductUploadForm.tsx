@@ -281,7 +281,11 @@ try{
             />
 
 
-            {/* QUANTITY */}
+           
+
+            {/* CURRENT VALUE */}
+<div className= "flex flex-row space-x-3"> 
+               {/* QUANTITY */}
 
             <Controller
               name="quantity"
@@ -314,9 +318,6 @@ try{
               )}
             />
 
-
-            {/* CURRENT VALUE */}
-<div className= "flex flex-row space-x-3"> 
             <Controller
               name="currentValue"
               control={form.control}
