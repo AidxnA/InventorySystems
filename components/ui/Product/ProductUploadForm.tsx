@@ -84,12 +84,19 @@ export function ProductUploadForm() {
   })
 
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+async function onSubmit(data: z.infer<typeof formSchema>) {
 
-    console.log("Product:", data) 
+
 try{
   // @ts-ignore
-  await uploadProduct(data)} catch(error){
+  const upload = await uploadProduct(data)
+
+  if(upload){
+    console.log("Product uploaded successfully:", upload)
+  }
+} 
+  
+  catch(error){
   console.error("Error uploading product:", error)
 }
     toast.success("Product submitted successfully")

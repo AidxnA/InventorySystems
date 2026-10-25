@@ -1,10 +1,11 @@
 "use server"
+
 import { prisma } from "./db";
 import { Product } from "./generated/prisma/browser";
 
 export async function uploadProduct(productData: Omit<Product, "id">) {
   try {
-    await prisma.product.create({
+   const upload = await prisma.product.create({
       data: {
         name: productData.name,
         brand: productData.brand,
@@ -16,17 +17,30 @@ export async function uploadProduct(productData: Omit<Product, "id">) {
       },
     });
 
+    return upload;
   } catch (error) {
     console.error("Error uploading product:", error);
     throw error;
   }
 }
-export async function getProducts() { 
-    try { 
-        const products = await prisma.product.findMany();
-        return products; 
+
+
+export type SerializedProduct = Omit<Product, "currentValue" | "costPrice"> & {
+  currentValue: number;
+  costPrice: number;
+};
+
+export async function getProducts(): Promise<SerializedProduct[]> {
+  try {
+    const products = await prisma.product.findMany();
+
+    return products.map((p) => ({
+      ...p,
+      currentValue: p.currentValue.toNumber(),
+      costPrice: p.costPrice.toNumber(),
+    }));
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
 }
-    catch (error) {
-        console.error("Error fetching products:", error);
-        throw error;
-    }}
