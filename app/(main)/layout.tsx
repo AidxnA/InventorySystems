@@ -4,6 +4,7 @@ import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 //import { cn } from "@/lib/utils";
 import Navbar from "@/components/ui/Navbar/Navbar";
+import { Toaster } from "sonner";
 
 
 
@@ -23,6 +24,7 @@ export default function RootLayout({
      
     >
       <ClerkProvider>
+        <Toaster />
         <body className="min-h-full flex flex-col"><Navbar/>{children}</body>
       </ClerkProvider>
     </html>
