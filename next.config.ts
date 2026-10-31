@@ -4,7 +4,8 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       allowedOrigins: [
-        "friendly-memory-pjpq4rpv9rpc6wxr-3000.app.github.dev",
+        "localhost:3000",
+        "zany-space-tribble-r444wq956rxhpqvq-3000.app.github.dev",
       ],
     },
   },
