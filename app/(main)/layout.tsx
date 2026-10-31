@@ -4,6 +4,7 @@ import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/ui/Navbar/Navbar";
+import { Toaster } from "sonner";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <ClerkProvider>
+        <Toaster />
         <body className="min-h-full flex flex-col"><Navbar/>{children}</body>
       </ClerkProvider>
     </html>

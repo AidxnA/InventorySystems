@@ -37,6 +37,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { Category } from "@/lib/generated/prisma/enums"
 import { uploadProduct } from "@/lib/actions"
+import { useRouter } from "next/navigation"
 
 
 const formSchema = z.object({
@@ -83,7 +84,7 @@ export function ProductUploadForm() {
     },
   })
 
-
+const router = useRouter()
 async function onSubmit(data: z.infer<typeof formSchema>) {
 
 
@@ -91,15 +92,21 @@ try{
   // @ts-ignore
   const upload = await uploadProduct(data)
 
+
   if(upload){
     console.log("Product uploaded successfully:", upload)
+    toast.success("Product uploaded successfully")
   }
 } 
   
   catch(error){
   console.error("Error uploading product:", error)
+  
+toast.error(`Product "${data.name}" uploaded failed`)
 }
-    toast.success("Product submitted successfully")
+  router.refresh()
+  
+
 
   }
 

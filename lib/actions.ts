@@ -32,7 +32,10 @@ export type SerializedProduct = Omit<Product, "currentValue" | "costPrice"> & {
 
 export async function getProducts(): Promise<SerializedProduct[]> {
   try {
-    const products = await prisma.product.findMany();
+    const products = await prisma.product.findMany(
+      {orderBy: {
+    createdAt: 'desc',
+  }});
 
     return products.map((p) => ({
       ...p,
