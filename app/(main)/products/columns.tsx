@@ -2,9 +2,11 @@
 
 import { Product } from "@/lib/generated/prisma/client"
 import { createColumnHelper } from "@tanstack/react-table"
+import { DataTableFeatures } from "./data-table-features"
+import { SerializedProduct } from "@/lib/actions"
 
 // Use `accessor` for data columns and `display` for columns without one.
-const columnHelper = createColumnHelper<Product>()
+const columnHelper = createColumnHelper<DataTableFeatures, SerializedProduct>()
 
 export const columns = columnHelper.columns([
   columnHelper.accessor("id", {

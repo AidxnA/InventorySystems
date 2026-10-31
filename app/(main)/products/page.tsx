@@ -5,8 +5,8 @@ import { getProducts } from '@/lib/actions'
 
 const page = async () => {
   const data = await getProducts()
-  console.log("Products:", data)
-
+ console.log("Products:", data)
+ 
   return (
     <div className="mx-auto mt-5 w-full max-w-7xl px-4">
       <div className="mb-4 flex justify-end">
