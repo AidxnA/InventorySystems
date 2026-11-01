@@ -13,21 +13,39 @@ import {
 
 import { features, type DataTableFeatures } from "./data-table-features"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
+
+
+
+
+
 
 interface DataTableProps<TData extends RowData> {
   columns: ColumnDef<DataTableFeatures, TData>[]
   data: TData[]
+  currentPage: number
 }
 
 export function DataTable<TData extends RowData>({
   columns,
   data,
+  currentPage
 }: DataTableProps<TData>) {
   const table = useTable({
     features,
     data,
     columns,
   })
+
+const islastPage = data.length < 10
+
+const router = useRouter()
+const nextPage = () => {
+  router.push(`/products?page=${currentPage + 1}`)
+}
+const previousPage = () => {
+  router.push(`/products?page=${currentPage - 1}`)
+}
 
   return (
     <div className="overflow-hidden rounded-md border">
@@ -74,16 +92,17 @@ export function DataTable<TData extends RowData>({
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
+          onClick={() => previousPage()}
+
+   
         >
           Previous
         </Button>
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
+            onClick={() => nextPage()}
+            disabled={islastPage}
         >
           Next
         </Button>

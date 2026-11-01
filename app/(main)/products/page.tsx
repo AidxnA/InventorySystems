@@ -3,8 +3,14 @@ import { columns } from './columns'
 import { ProductUploadDialog } from '@/components/ui/Product/ProductUploadDialog'
 import { getProducts } from '@/lib/actions'
 
-const page = async () => {
-  const data = await getProducts()
+
+
+const page = async ({searchParams}:any) => {
+  const params = await searchParams
+  const page_number = params.page 
+  
+
+  const data = await getProducts(parseInt(page_number) || 1)
  console.log("Products:", data)
  
   return (
@@ -12,7 +18,7 @@ const page = async () => {
       <div className="mb-4 flex justify-end">
         <ProductUploadDialog />
       </div>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data}  currentPage={parseInt(page_number) || 1} />
     </div>
   )
 }
